@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-6">
+              <!-- Form Basic -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Edit Category </h6>
+                </div>
+                <div class="card-body">
+                  <form method="POST" action="{% url 'updatecategory' dataid=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"> Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cname" value="{{data.category_name}}">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Discription</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="discription" value="{{data.discription}}">
+
+                    </div>
+
+                     <div class="form-group">
+                      <div class="custom-file">
+<!--                          <img src="{{data.image.url}}" style="height:100px;width:100px;">-->
+
+
+                        <input type="file" class="custom-file-input"  name="image" value="{{data.image}}" >
+                        <label class="custom-file-label" >Category image</label>
+                      </div>
+                    </div>
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary">update</button>
+                  </form>
+                </div>
+              </div>
+
+
+</body>
+</html>
+{% endblock %}
